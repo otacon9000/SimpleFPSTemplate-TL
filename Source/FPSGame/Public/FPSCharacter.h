@@ -13,7 +13,7 @@ class AFPSProjectile;
 class USoundBase;
 class UAnimSequence;
 class UParticleSystem;
-
+class AFPSBombActor;
 
 UCLASS()
 class AFPSCharacter : public ACharacter
@@ -47,6 +47,9 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category="Projectile")
 	TSubclassOf<AFPSProjectile> ProjectileClass;
 
+	UPROPERTY(EditDefaultsOnly, Category="Bomb")
+	TSubclassOf<AFPSBombActor> BombClass;
+
 	/** Sound to play each time we fire */
 	UPROPERTY(EditDefaultsOnly, Category="Gameplay")
 	USoundBase* FireSound;
@@ -66,6 +69,8 @@ protected:
 	
 	/** Fires a projectile. */
 	void Fire();
+
+	void SpawnBomb();
 
 	/** Handles moving forward/backward */
 	void MoveForward(float Val);
